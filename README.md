@@ -1,30 +1,75 @@
-# Audio Library Server
+# Audio Library
 
-Node.js/Express backend API for audio content sharing platform with user authentication, file upload, and social features.
+A full-stack audio content sharing platform where users can upload, stream, and discover audio content with social features.
 
 **Live API:** `https://ba478cc6-c46f-467a-b890-fa8e86a38e25.e1-us-east-azure.choreoapps.dev`
 
-**Deployed on:** WSO2 Choreo
+## Overview
+
+Audio Library is a MEAN stack application that allows users to:
+
+- Upload and stream audio files (podcasts, audiobooks, music)
+- Create profiles and follow other users
+- Like, comment, and discover content
+- Organize content by genres and privacy settings
+- Admin dashboard for content management
+
+## Architecture
+
+- **Backend:** Node.js/Express API with MongoDB
+- **Frontend:** Angular (Coming Soon)
+- **Database:** MongoDB Atlas
+- **Deployment:** WSO2 Choreo
+- **Storage:** File-based with user organization
+
+## Current Status
+
+- ✅ **Server (Complete)** - Fully functional REST API with authentication, file upload, and social features
+- 🚧 **Client (In Development)** - Angular frontend coming soon
+
+## Repository Structure
+
+```
+audio-library/
+├── server/          # Node.js/Express backend API
+│   ├── config/      # Database and file upload configuration
+│   ├── controllers/ # API business logic
+│   ├── middlewares/ # Authentication and validation
+│   ├── models/      # MongoDB schemas
+│   ├── routes/      # API endpoints
+│   └── README.md    # Server documentation
+└── client/          # Angular frontend (Coming Soon)
+```
 
 ## Features
 
-- JWT authentication with role-based access control
-- Audio file upload and streaming with range request support
-- User profiles with follow/unfollow system
-- Audio likes, comments, and personalized feeds
-- Public/private content management
-- Admin dashboard with system statistics
-- Advanced search and filtering
+### User Management
+- JWT authentication and authorization
+- User profiles with profile pictures
+- Follow/unfollow system
+- Role-based access (User/Admin)
 
-## Tech Stack
+### Audio Features
+- Upload audio files with cover images
+- Stream audio with range request support
+- Public/private content settings
+- Genre categorization
+- Like and comment system
 
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB with Mongoose
-- **Authentication:** JWT
-- **File Upload:** Multer
-- **Validation:** express-validator
+### Social Features
+- Following feed of user content
+- Search and filter capabilities
+- User interaction tracking
+- Content discovery
 
-## Quick Start
+### Admin Features
+- System statistics and analytics
+- User and content management
+- Administrative controls
+
+## Getting Started
+
+### Server Setup
 
 ```bash
 git clone https://github.com/MuhammadAbdelkader/audio-library.git
@@ -40,77 +85,46 @@ PORT=3000
 ```
 
 ```bash
-npm run dev  # Development
-npm start    # Production
+npm run dev
 ```
 
-## API Endpoints
+### Client Setup
+Frontend development in progress. Check back soon for Angular application.
 
-### Authentication
-```http
-POST /api/register    # Register user (multipart/form-data)
-POST /api/login       # Login user
-```
+## API Documentation
 
-### Audio Management
-```http
-GET  /api/audio                    # Get public audios
-POST /api/audio                    # Upload audio (auth required)
-GET  /api/audio/stream/:id         # Stream audio
-POST /api/audio/:id/like           # Like/unlike audio
-POST /api/audio/:id/comments       # Add comment
-```
+The server provides a RESTful API with the following main endpoints:
 
-### User Profile
-```http
-GET  /api/profile                  # Get user profile
-PUT  /api/profile                  # Update profile
-POST /api/profile/follow/:userId   # Follow user
-GET  /api/profile/feed             # Get following feed
-```
+- `/api/register` - User registration
+- `/api/login` - User authentication  
+- `/api/audio` - Audio content management
+- `/api/profile` - User profile operations
+- `/api/admin` - Administrative functions
 
-### Admin (Admin role required)
-```http
-GET /api/admin/stats               # System statistics
-GET /api/admin/users               # All users
-GET /api/admin/audios              # All audios
-```
+Full API documentation available in the [server README](./server/README.md).
 
-## File Support
+## Tech Stack
 
-- **Audio:** MP3, M4A (max 50MB)
-- **Images:** JPG, JPEG, PNG (max 50MB)
-- **Organization:** Auto-organized by user directories
+**Backend:**
+- Node.js & Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- Multer for file uploads
+- Express-validator
 
-## Deployment
+**Frontend (Planned):**
+- Angular
+- TypeScript
+- Angular Material UI
+- RxJS for reactive programming
 
-Deployed on **WSO2 Choreo** cloud platform.
+## Contributing
 
-**Environment Configuration:**
-- MongoDB Atlas cluster for database
-- Cloud-based file storage
-- JWT authentication with secure secret
-- Port 3000 for production server
-
-## Authentication
-
-Include JWT token in requests:
-```http
-Authorization: Bearer <your-jwt-token>
-```
-
-## Project Structure
-
-```
-├── config/           # Database & file upload config
-├── controllers/      # Business logic
-├── middlewares/      # Auth, validation, error handling
-├── models/          # MongoDB schemas
-├── routes/          # API routes
-├── uploads/         # File storage
-├── app.js           # Express configuration
-└── server.js        # Entry point
-```
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
 ## Author
 
