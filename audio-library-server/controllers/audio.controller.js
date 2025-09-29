@@ -364,7 +364,7 @@ const deleteComment = async (req, res, next) => {
       return next(error);
     }
 
-    comment.remove();
+    audio.comments.id(commentId).deleteOne();
     await audio.save();
 
     res.json({

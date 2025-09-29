@@ -29,7 +29,7 @@ const genreValidator = body("genre")
   .withMessage("Invalid genre");
 
 // Custom: Check MongoDB ObjectId
-const objectIdValidator = param("id")
+const objectIdValidator = param("userId")
   .custom((value) => mongoose.Types.ObjectId.isValid(value))
   .withMessage("Invalid ID");
 
@@ -71,6 +71,7 @@ const searchValidators = [
   query("limit").optional().isInt({ min: 1, max: 100 }).withMessage("Limit must be between 1 and 100"),
   query("genre").optional().isIn(allowedGenres).withMessage("Invalid genre filter"),
 ];
+
 
 module.exports = {
   validate,
